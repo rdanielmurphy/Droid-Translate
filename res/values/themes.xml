@@ -1,0 +1,6 @@
+<resources>
+    <style name="CustomButton" parent="android:style/Theme.NoTitleBar">
+        <item name="android:buttonStyle">@style/Button</item>
+        <item name="android:spinnerStyle">@style/Spinner</item>
+    </style>
+</resources>

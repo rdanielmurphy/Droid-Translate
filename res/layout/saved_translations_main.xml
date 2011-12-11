@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" android:background="#A31C0C">
+	<EditText android:text="@+id/EditText01" android:layout_height="wrap_content" android:id="@+id/txtBoxSearch" android:layout_width="fill_parent"></EditText><ListView
+		android:id="@android:id/list"
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:drawSelectorOnTop="false" android:layout_marginLeft="4px" android:layout_marginRight="4px"/>
+
+</LinearLayout>

@@ -1,0 +1,7 @@
+<RelativeLayout android:id="@+id/RelativeLayout01" xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="fill_parent" android:layout_width="fill_parent" android:background="#A31C0C">
+<EditText android:layout_centerInParent="true" android:layout_width="fill_parent" android:id="@+id/txtBoxVerb" android:layout_height="wrap_content"></EditText>
+<Spinner android:layout_above="@+id/txtBoxVerb" android:layout_height="wrap_content" android:id="@+id/cmbBoxConjLanguage" android:layout_centerHorizontal="true" android:layout_width="200px"></Spinner><Button android:text="Back" android:id="@+id/btnConjugateBack" android:layout_centerHorizontal="true" android:layout_alignParentBottom="true" android:layout_alignParentRight="true" android:layout_height="wrap_content" android:layout_width="wrap_content"></Button>
+<Button android:layout_height="wrap_content" android:layout_below="@+id/txtBoxVerb" android:layout_width="wrap_content" android:id="@+id/btnConjugate" android:text="Conjugate" android:layout_centerInParent="true"></Button>
+
+
+</RelativeLayout>

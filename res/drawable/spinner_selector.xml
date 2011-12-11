@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<!-- DROPDOWN SHOWING-->   			 
+    <item android:state_first="true"
+    	  android:drawable="@drawable/btn_dropdown"
+    	  />   	
+    <item android:state_middle="true" 
+    	  android:drawable="@drawable/btn_dropdown"
+    	  />   			 
+    <item android:state_last="true"
+    	  android:drawable="@drawable/btn_dropdown"
+    	  />   
+    <item android:state_single="true"
+    	  android:drawable="@drawable/btn_dropdown"
+    	  />   		  			 
+</selector>

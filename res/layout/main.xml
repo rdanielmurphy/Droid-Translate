@@ -1,0 +1,10 @@
+<RelativeLayout android:id="@+id/RelativeLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:background="#A31C0C">
+
+
+
+
+<TableLayout android:layout_toRightOf="@+id/btnExit" android:id="@+id/TableLayout01" android:layout_width="400px" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:layout_height="wrap_content"><Button android:layout_height="wrap_content" android:id="@+id/btnNewTrans" android:text="New Translation" android:layout_below="@+id/lblHeader" android:layout_centerHorizontal="true" android:width="250px" android:layout_width="250px" android:height="80px" android:layout_marginBottom="10px"></Button><Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignWithParentIfMissing="true" android:layout_alignParentTop="false" android:layout_centerInParent="true" android:id="@+id/btnSavedTrans" android:text="Saved Translation" android:layout_below="@+id/btnNewTrans" android:width="250px" android:height="80px" android:layout_marginBottom="10px"></Button><Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:id="@+id/btnConjugate" android:layout_below="@+id/btnSavedTrans" android:width="250px" android:text="Conjugate Verbs" android:height="80px" android:layout_marginBottom="10px"></Button><Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/btnSpeechToSpeech" android:layout_below="@+id/btnConjugate" android:layout_centerInParent="true" android:text="Speech to Speech" android:width="250px" android:height="80px" android:layout_marginBottom="10px"></Button><Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/btnExit" android:text="Exit" android:width="100px" android:layout_alignParentBottom="true" android:layout_centerInParent="true" android:height="80px"></Button></TableLayout>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal" android:background="@drawable/btn_trans" android:layout_width="fill_parent" android:layout_marginTop="5px">
+	<ImageView
+		android:paddingLeft="2px"
+		android:paddingTop="2px"
+		android:layout_height="wrap_content"
+		android:paddingRight="2px" android:layout_width="50px" android:id="@+id/iconFrom" android:src="@drawable/spa"/>
+	
+
+<TextView android:layout_height="wrap_content" android:id="@+id/lblLangTo" android:layout_marginTop="5px" android:layout_width="30px" android:text=" -to- " android:textSize="10sp"></TextView><ImageView android:layout_height="wrap_content" android:id="@+id/iconTo" android:layout_width="50px" android:paddingLeft="2px" android:paddingRight="2px" android:paddingTop="2px" android:src="@drawable/eng"></ImageView>
+<TextView android:text="@+id/TextView01" android:id="@+id/lblSavedTranslation" android:layout_width="fill_parent" android:paddingTop="2px" android:gravity="bottom|center" android:layout_height="wrap_content"></TextView>
+
+</LinearLayout>
