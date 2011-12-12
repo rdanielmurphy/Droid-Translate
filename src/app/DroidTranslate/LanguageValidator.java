@@ -1,12 +1,23 @@
 package app.DroidTranslate;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.google.api.translate.Language;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 //To support new languages: add a public constant and add the languages' properties to the 
 //languages list.  Then add it to the arrays.xml file.
@@ -33,8 +44,16 @@ public class LanguageValidator {
 
 	private static final String _INSERT_VERB = "#INSERT_VERB#";
 
+	private static String _appId;
+
 	// Private Constructor. Do not call.
 	private LanguageValidator() {
+	}
+
+	private static void initAppId() {
+		// read app id from a file that is not committed!
+
+		_appId = "1E47522B362401BF266FE807B29497926065288B";
 	}
 
 	// Initialize Internal Language List
@@ -47,10 +66,7 @@ public class LanguageValidator {
 		language.put(_NAME, ENGLISH_LANG);
 		language.put(_ABBR, "en");
 		language.put(_LOCALE, Locale.US);
-		language.put(_LANG, Language.ENGLISH);
-		language.put(_CONJ,
-				"http://conjugator.reverso.net/conjugation-english-verb-"
-						+ _INSERT_VERB + ".html");
+		language.put(_CONJ, "http://conjugator.reverso.net/conjugation-english-verb-" + _INSERT_VERB + ".html");
 		language.put(_IMAGE, R.drawable.eng);
 		_languages.add(language);
 
@@ -59,7 +75,6 @@ public class LanguageValidator {
 		language.put(_NAME, SPANISH_LANG);
 		language.put(_ABBR, "es");
 		language.put(_LOCALE, new Locale("spa", "ESP"));
-		language.put(_LANG, Language.SPANISH);
 		language.put(_CONJ, "http://www.wordreference.com/conj/EsVerbs.asp?v=" + _INSERT_VERB);
 		language.put(_IMAGE, R.drawable.spa);
 		_languages.add(language);
@@ -69,7 +84,6 @@ public class LanguageValidator {
 		language.put(_NAME, FRENCH_LANG);
 		language.put(_ABBR, "fr");
 		language.put(_LOCALE, Locale.FRANCE);
-		language.put(_LANG, Language.FRENCH);
 		language.put(_CONJ, "http://www.wordreference.com/conj/FrVerbs.asp?v=" + _INSERT_VERB);
 		language.put(_IMAGE, R.drawable.fre);
 		_languages.add(language);
@@ -79,7 +93,6 @@ public class LanguageValidator {
 		language.put(_NAME, ITALIAN_LANG);
 		language.put(_ABBR, "it");
 		language.put(_LOCALE, Locale.ITALIAN);
-		language.put(_LANG, Language.ITALIAN);
 		language.put(_CONJ, "http://www.wordreference.com/conj/ITverbs.asp?v=" + _INSERT_VERB);
 		language.put(_IMAGE, R.drawable.ital);
 		_languages.add(language);
@@ -137,36 +150,34 @@ public class LanguageValidator {
 		if (_languages == null)
 			initLanguageList();
 		for (Map<String, Object> entry : _languages) {
-			if (entry.get(_NAME).equals(language)
-					|| entry.get(_ABBR).equals(language))
+			if (entry.get(_NAME).equals(language) || entry.get(_ABBR).equals(language))
 				return (Locale) entry.get(_LOCALE);
 		}
 		return null;
 	}
 
-	public static Language getLanguageObject(String language) {
+	public static String getLanguageString(String language) {
 		if (_languages == null)
 			initLanguageList();
 		for (Map<String, Object> entry : _languages) {
-			if (entry.get(_NAME).equals(language)
-					|| entry.get(_ABBR).equals(language))
-				return (Language) entry.get(_LANG);
+			if (entry.get(_NAME).equals(language) || entry.get(_ABBR).equals(language))
+				return entry.get(_ABBR).toString();
 		}
 		return null;
 	}
 
-	public static String getWebSite(String language, String verb){
+	public static String getWebSite(String language, String verb) {
 		if (_languages == null)
 			initLanguageList();
 		String site = "";
-		for(Map<String,Object> entry :_languages){
-			if(entry.get(_NAME).equals(language)  || entry.get(_ABBR).equals(language))
-				site = (String)entry.get(_CONJ);
+		for (Map<String, Object> entry : _languages) {
+			if (entry.get(_NAME).equals(language) || entry.get(_ABBR).equals(language))
+				site = (String) entry.get(_CONJ);
 		}
-		
-		if(site.contains(_INSERT_VERB))
+
+		if (site.contains(_INSERT_VERB))
 			site = site.replace(_INSERT_VERB, verb);
-		
+
 		return site;
 	}
 
@@ -201,5 +212,46 @@ public class LanguageValidator {
 				return (Integer) entry.get(_IMAGE);
 		}
 		return R.drawable.icon;
+	}
+
+	private static String httpGet(String urlStr) throws IOException {
+		URL url = new URL(urlStr);
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+		if (conn.getResponseCode() != 200) {
+			throw new IOException(conn.getResponseMessage());
+		}
+
+		// Buffer the result into a string
+		BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		StringBuilder sb = new StringBuilder();
+		String line;
+		while ((line = rd.readLine()) != null) {
+			sb.append(line);
+		}
+		rd.close();
+
+		conn.disconnect();
+		return sb.toString();
+	}
+
+	private static String parseXML(String xml) throws Exception {
+		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+		Document doc = docBuilder.parse(new InputSource(new StringReader(xml)));
+		NodeList translations = doc.getElementsByTagName("string");
+		String item = translations.item(0).getTextContent().toString();
+
+		return item;
+	}
+
+	public static String translateString(String languageFrom, String languageTo, String text) throws Exception {
+		if (_appId == null)
+			initAppId();
+
+		String uri = "http://api.microsofttranslator.com/v2/Http.svc/Translate?appId=" + _appId + "&text=" + java.net.URLEncoder.encode(text) + "&from="
+				+ languageFrom + "&to=" + languageTo;
+
+		return parseXML(httpGet(uri));
 	}
 }
