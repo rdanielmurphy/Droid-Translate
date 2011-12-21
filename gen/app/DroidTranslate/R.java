@@ -9,7 +9,7 @@ package app.DroidTranslate;
 
 public final class R {
     public static final class array {
-        public static final int languages=0x7f040000;
+        public static final int languages=0x7f050000;
     }
     public static final class attr {
     }
@@ -42,79 +42,79 @@ public final class R {
         public static final int spinner_selector=0x7f020019;
     }
     public static final class id {
-        public static final int Button01=0x7f070047;
-        public static final int EditText01=0x7f070011;
-        public static final int GridLayout=0x7f070013;
-        public static final int RelativeLayout01=0x7f070000;
-        public static final int TableLayout01=0x7f070007;
-        public static final int TableRow01=0x7f070014;
-        public static final int TextView01=0x7f07000f;
-        public static final int TextView02=0x7f070017;
-        public static final int btnAddEmail=0x7f070020;
-        public static final int btnAddNumber=0x7f070027;
-        public static final int btnBack=0x7f07003d;
-        public static final int btnCancel=0x7f070038;
-        public static final int btnCancelEmail=0x7f07001d;
-        public static final int btnCancelSMS=0x7f070024;
-        public static final int btnCloseContacts=0x7f070005;
-        public static final int btnConjugate=0x7f070004;
-        public static final int btnConjugateBack=0x7f070003;
-        public static final int btnContacts=0x7f070026;
-        public static final int btnCopy=0x7f07003f;
-        public static final int btnEmail=0x7f07003c;
-        public static final int btnEmailContacts=0x7f07001f;
-        public static final int btnExit=0x7f070006;
-        public static final int btnExitSetings=0x7f07002e;
-        public static final int btnExitSpeechToSpeech=0x7f070033;
-        public static final int btnGoSpeechToSpeech=0x7f070031;
-        public static final int btnNewTrans=0x7f070008;
-        public static final int btnResetRecepients=0x7f07001a;
-        public static final int btnResetRecievers=0x7f070022;
-        public static final int btnSave=0x7f07003b;
-        public static final int btnSaveSettings=0x7f07002f;
-        public static final int btnSavedTrans=0x7f07000a;
-        public static final int btnSendEmail=0x7f07001e;
-        public static final int btnSendSMS=0x7f070025;
-        public static final int btnSpeechToSpeech=0x7f07000b;
-        public static final int btnSpeechToText=0x7f070043;
-        public static final int btnSubmit=0x7f070039;
-        public static final int btnSwitch=0x7f070045;
-        public static final int btnText=0x7f07003e;
-        public static final int btnTranslate=0x7f070048;
-        public static final int cmbBoxConjLanguage=0x7f070002;
-        public static final int cmbBoxDefaultConjLang=0x7f07002d;
-        public static final int cmbBoxDefaultLangFrom=0x7f070029;
-        public static final int cmbBoxDefaultLangTo=0x7f070030;
-        public static final int cmbBoxFrom=0x7f070044;
-        public static final int cmbBoxSpeechToSpeechLang=0x7f070032;
-        public static final int cmbBoxTo=0x7f070046;
-        public static final int iconFrom=0x7f07000c;
-        public static final int iconTo=0x7f07000e;
-        public static final int lblDefaultConjLangs=0x7f07002c;
-        public static final int lblDefaultLangFrom=0x7f07002a;
-        public static final int lblDefaultLangTo=0x7f07002b;
-        public static final int lblDefaultTransLangs=0x7f070028;
-        public static final int lblHeader=0x7f070009;
-        public static final int lblLangTo=0x7f07000d;
-        public static final int lblOrigText=0x7f07003a;
-        public static final int lblSavedTranslation=0x7f070010;
-        public static final int lblScore=0x7f070018;
-        public static final int lblSubmit=0x7f070036;
-        public static final int lblTo=0x7f070019;
-        public static final int lblTransText=0x7f070040;
-        public static final int lblType=0x7f070016;
-        public static final int lblUser=0x7f070015;
-        public static final int txtBoxEmail=0x7f07001c;
-        public static final int txtBoxEmailTo=0x7f07001b;
-        public static final int txtBoxMessage=0x7f070023;
-        public static final int txtBoxName=0x7f070037;
-        public static final int txtBoxSearch=0x7f070012;
-        public static final int txtBoxText=0x7f070041;
-        public static final int txtBoxTo=0x7f070021;
-        public static final int txtBoxTranslated=0x7f070042;
-        public static final int txtBoxVerb=0x7f070001;
-        public static final int txtViewDecodedSpeech=0x7f070034;
-        public static final int txtViewTranslatedSpeech=0x7f070035;
+        public static final int Button01=0x7f080047;
+        public static final int EditText01=0x7f080011;
+        public static final int GridLayout=0x7f080013;
+        public static final int RelativeLayout01=0x7f080000;
+        public static final int TableLayout01=0x7f080007;
+        public static final int TableRow01=0x7f080014;
+        public static final int TextView01=0x7f08000f;
+        public static final int TextView02=0x7f080017;
+        public static final int btnAddEmail=0x7f080020;
+        public static final int btnAddNumber=0x7f080027;
+        public static final int btnBack=0x7f08003d;
+        public static final int btnCancel=0x7f080038;
+        public static final int btnCancelEmail=0x7f08001d;
+        public static final int btnCancelSMS=0x7f080024;
+        public static final int btnCloseContacts=0x7f080005;
+        public static final int btnConjugate=0x7f080004;
+        public static final int btnConjugateBack=0x7f080003;
+        public static final int btnContacts=0x7f080026;
+        public static final int btnCopy=0x7f08003f;
+        public static final int btnEmail=0x7f08003c;
+        public static final int btnEmailContacts=0x7f08001f;
+        public static final int btnExit=0x7f080006;
+        public static final int btnExitSetings=0x7f08002e;
+        public static final int btnExitSpeechToSpeech=0x7f080033;
+        public static final int btnGoSpeechToSpeech=0x7f080031;
+        public static final int btnNewTrans=0x7f080008;
+        public static final int btnResetRecepients=0x7f08001a;
+        public static final int btnResetRecievers=0x7f080022;
+        public static final int btnSave=0x7f08003b;
+        public static final int btnSaveSettings=0x7f08002f;
+        public static final int btnSavedTrans=0x7f08000a;
+        public static final int btnSendEmail=0x7f08001e;
+        public static final int btnSendSMS=0x7f080025;
+        public static final int btnSpeechToSpeech=0x7f08000b;
+        public static final int btnSpeechToText=0x7f080043;
+        public static final int btnSubmit=0x7f080039;
+        public static final int btnSwitch=0x7f080045;
+        public static final int btnText=0x7f08003e;
+        public static final int btnTranslate=0x7f080048;
+        public static final int cmbBoxConjLanguage=0x7f080002;
+        public static final int cmbBoxDefaultConjLang=0x7f08002d;
+        public static final int cmbBoxDefaultLangFrom=0x7f080029;
+        public static final int cmbBoxDefaultLangTo=0x7f080030;
+        public static final int cmbBoxFrom=0x7f080044;
+        public static final int cmbBoxSpeechToSpeechLang=0x7f080032;
+        public static final int cmbBoxTo=0x7f080046;
+        public static final int iconFrom=0x7f08000c;
+        public static final int iconTo=0x7f08000e;
+        public static final int lblDefaultConjLangs=0x7f08002c;
+        public static final int lblDefaultLangFrom=0x7f08002a;
+        public static final int lblDefaultLangTo=0x7f08002b;
+        public static final int lblDefaultTransLangs=0x7f080028;
+        public static final int lblHeader=0x7f080009;
+        public static final int lblLangTo=0x7f08000d;
+        public static final int lblOrigText=0x7f08003a;
+        public static final int lblSavedTranslation=0x7f080010;
+        public static final int lblScore=0x7f080018;
+        public static final int lblSubmit=0x7f080036;
+        public static final int lblTo=0x7f080019;
+        public static final int lblTransText=0x7f080040;
+        public static final int lblType=0x7f080016;
+        public static final int lblUser=0x7f080015;
+        public static final int txtBoxEmail=0x7f08001c;
+        public static final int txtBoxEmailTo=0x7f08001b;
+        public static final int txtBoxMessage=0x7f080023;
+        public static final int txtBoxName=0x7f080037;
+        public static final int txtBoxSearch=0x7f080012;
+        public static final int txtBoxText=0x7f080041;
+        public static final int txtBoxTo=0x7f080021;
+        public static final int txtBoxTranslated=0x7f080042;
+        public static final int txtBoxVerb=0x7f080001;
+        public static final int txtViewDecodedSpeech=0x7f080034;
+        public static final int txtViewTranslatedSpeech=0x7f080035;
     }
     public static final class layout {
         public static final int conjugator=0x7f030000;
@@ -132,13 +132,16 @@ public final class R {
         public static final int translateditemview=0x7f03000c;
         public static final int translationsession=0x7f03000d;
     }
+    public static final class raw {
+        public static final int jehle_verb_database=0x7f040000;
+    }
     public static final class string {
-        public static final int app_name=0x7f050001;
-        public static final int hello=0x7f050000;
+        public static final int app_name=0x7f060001;
+        public static final int hello=0x7f060000;
     }
     public static final class style {
-        public static final int Button=0x7f060000;
-        public static final int CustomButton=0x7f060002;
-        public static final int Spinner=0x7f060001;
+        public static final int Button=0x7f070000;
+        public static final int CustomButton=0x7f070002;
+        public static final int Spinner=0x7f070001;
     }
 }

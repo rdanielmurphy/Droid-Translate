@@ -26,7 +26,6 @@ public class LanguageValidator {
 	private static final String _NAME = "name";
 	private static final String _ABBR = "abbr";
 	private static final String _LOCALE = "locale";
-	private static final String _LANG = "language";
 	private static final String _CONJ = "conjugation";
 	private static final String _LANG_FROM = "language_orig";
 	private static final String _LANG_TO = "language_trans";
@@ -41,6 +40,10 @@ public class LanguageValidator {
 	public static final String SPANISH_LANG = "Spanish";
 	public static final String FRENCH_LANG = "French";
 	public static final String ITALIAN_LANG = "Italian";
+	public static final String ENGLISH_LANG_ABBR = "en";
+	public static final String SPANISH_LANG_ABBR = "es";
+	public static final String FRENCH_LANG_ABBR = "fr";
+	public static final String ITALIAN_LANG_ABBR = "it";
 
 	private static final String _INSERT_VERB = "#INSERT_VERB#";
 
@@ -64,7 +67,7 @@ public class LanguageValidator {
 		// English
 		language = new HashMap<String, Object>();
 		language.put(_NAME, ENGLISH_LANG);
-		language.put(_ABBR, "en");
+		language.put(_ABBR, ENGLISH_LANG_ABBR);
 		language.put(_LOCALE, Locale.US);
 		language.put(_CONJ, "http://conjugator.reverso.net/conjugation-english-verb-" + _INSERT_VERB + ".html");
 		language.put(_IMAGE, R.drawable.eng);
@@ -73,7 +76,7 @@ public class LanguageValidator {
 		// Spanish
 		language = new HashMap<String, Object>();
 		language.put(_NAME, SPANISH_LANG);
-		language.put(_ABBR, "es");
+		language.put(_ABBR, SPANISH_LANG_ABBR);
 		language.put(_LOCALE, new Locale("spa", "ESP"));
 		language.put(_CONJ, "http://www.wordreference.com/conj/EsVerbs.asp?v=" + _INSERT_VERB);
 		language.put(_IMAGE, R.drawable.spa);
@@ -82,7 +85,7 @@ public class LanguageValidator {
 		// French
 		language = new HashMap<String, Object>();
 		language.put(_NAME, FRENCH_LANG);
-		language.put(_ABBR, "fr");
+		language.put(_ABBR, FRENCH_LANG_ABBR);
 		language.put(_LOCALE, Locale.FRANCE);
 		language.put(_CONJ, "http://www.wordreference.com/conj/FrVerbs.asp?v=" + _INSERT_VERB);
 		language.put(_IMAGE, R.drawable.fre);
@@ -91,7 +94,7 @@ public class LanguageValidator {
 		// French
 		language = new HashMap<String, Object>();
 		language.put(_NAME, ITALIAN_LANG);
-		language.put(_ABBR, "it");
+		language.put(_ABBR, ITALIAN_LANG_ABBR);
 		language.put(_LOCALE, Locale.ITALIAN);
 		language.put(_CONJ, "http://www.wordreference.com/conj/ITverbs.asp?v=" + _INSERT_VERB);
 		language.put(_IMAGE, R.drawable.ital);
