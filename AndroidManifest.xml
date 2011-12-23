@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="app.DroidTranslate"
-      android:versionCode="7"
-      android:versionName="3.0.0">
+      android:versionCode="8"
+      android:versionName="4.0.0">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.SEND_SMS"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <application android:icon="@drawable/icon" android:label="@string/app_name" 
     android:theme="@style/CustomButton">
         <activity android:name=".Main" 
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:theme="@style/CustomButton">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -18,47 +19,57 @@
 
         <activity android:name=".TranslationSession"
         			android:screenOrientation="landscape"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:theme="@style/CustomButton">
         </activity>
 
         <activity android:name=".TranslatedItemView"
         android:screenOrientation="landscape"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:theme="@style/CustomButton">
         </activity>
                 
         <activity android:name=".SavedTranslationsList"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:theme="@style/CustomButton">
         </activity>
         
         <activity android:name=".Conjugation"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:theme="@style/CustomButton">
         </activity>
         
         <activity android:name=".WebHolder"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:theme="@style/CustomButton">
         </activity>
         
         <activity android:name=".TranslationSettings"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:theme="@style/CustomButton">
         </activity>
                 
          <activity android:name=".SendTranslationSMS"
          android:screenOrientation="landscape"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:theme="@style/CustomButton">
         </activity>
         
        <activity android:name=".SpeechToSpeechSession"
          android:screenOrientation="landscape"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:theme="@style/CustomButton">
         </activity>
         
         <activity android:name=".SendTranslationEmail"
          android:screenOrientation="landscape"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:theme="@style/CustomButton">
         </activity>
         
         <activity android:name=".ContactsActivity"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:theme="@style/CustomButton">
         </activity>        
     </application>
     <uses-sdk android:minSdkVersion="7" />
