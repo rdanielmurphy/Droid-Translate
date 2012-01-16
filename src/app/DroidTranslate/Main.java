@@ -8,10 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -38,13 +41,61 @@ public class Main extends Activity implements View.OnClickListener {
 		setContentBasedOnLayout();
 
 		btnConjugation = (ImageButton) findViewById(R.id.btnConjugator);
-		btnConjugation.setOnClickListener(this);
+		btnConjugation.setOnTouchListener(new OnTouchListener() {
+			public boolean onTouch(View v, MotionEvent me) {
+				if (me.getAction() == MotionEvent.ACTION_DOWN)
+					btnConjugation.setColorFilter(Color.argb(150, 155, 155, 155));
+				else if (me.getAction() == MotionEvent.ACTION_UP) {
+					btnConjugation.setColorFilter(Color.argb(0, 155, 155, 155)); // or null
+					Intent intent = new Intent(Main.this, ConjugationSession.class);
+					startActivity(intent);
+				}
+
+				return true;
+			}
+		});
 		btnSettings = (ImageButton) findViewById(R.id.btnSettings);
-		btnSettings.setOnClickListener(this);
+		btnSettings.setOnTouchListener(new OnTouchListener() {
+			public boolean onTouch(View v, MotionEvent me) {
+				if (me.getAction() == MotionEvent.ACTION_DOWN)
+					btnSettings.setColorFilter(Color.argb(150, 155, 155, 155));
+				else if (me.getAction() == MotionEvent.ACTION_UP) {
+					btnSettings.setColorFilter(Color.argb(0, 155, 155, 155)); // or null
+					Intent intent = new Intent(Main.this, TranslationSettings.class);
+					startActivity(intent);
+				}
+
+				return true;
+			}
+		});
 		btnHistory = (ImageButton) findViewById(R.id.btnHistory);
-		btnHistory.setOnClickListener(this);
+		btnHistory.setOnTouchListener(new OnTouchListener() {
+			public boolean onTouch(View v, MotionEvent me) {
+				if (me.getAction() == MotionEvent.ACTION_DOWN)
+					btnHistory.setColorFilter(Color.argb(150, 155, 155, 155));
+				else if (me.getAction() == MotionEvent.ACTION_UP) {
+					btnHistory.setColorFilter(Color.argb(0, 155, 155, 155)); // or null
+					Intent intent = new Intent(Main.this, SavedTranslationsList.class);
+					startActivity(intent);
+				}
+
+				return true;
+			}
+		});
 		btnSpeechToSpeech = (ImageButton) findViewById(R.id.btnSpeechToSpeech);
-		btnSpeechToSpeech.setOnClickListener(this);
+		btnSpeechToSpeech.setOnTouchListener(new OnTouchListener() {
+			public boolean onTouch(View v, MotionEvent me) {
+				if (me.getAction() == MotionEvent.ACTION_DOWN)
+					btnSpeechToSpeech.setColorFilter(Color.argb(150, 155, 155, 155));
+				else if (me.getAction() == MotionEvent.ACTION_UP) {
+					btnSpeechToSpeech.setColorFilter(Color.argb(0, 155, 155, 155)); // or null
+					Intent intent = new Intent(Main.this, SpeechToSpeechSession.class);
+					startActivity(intent);
+				}
+
+				return true;
+			}
+		});
 
 		btnTranslate = (Button) findViewById(R.id.btnTranslate);
 		btnTranslate.setOnClickListener(this);
@@ -77,7 +128,6 @@ public class Main extends Activity implements View.OnClickListener {
 		}
 	}
 
-	
 	/**
 	 * 
 	 */
@@ -131,19 +181,7 @@ public class Main extends Activity implements View.OnClickListener {
 	}
 
 	public void onClick(View view) {
-		if (view.equals(btnSettings)) {
-			Intent intent = new Intent(this, TranslationSettings.class);
-			startActivity(intent);
-		} else if (view.equals(btnConjugation)) {
-			Intent intent = new Intent(this, Conjugation.class);
-			startActivity(intent);
-		} else if (view.equals(btnHistory)) {
-			Intent intent = new Intent(this, SavedTranslationsList.class);
-			startActivity(intent);
-		} else if (view.equals(btnSpeechToSpeech)) {
-			Intent intent = new Intent(this, SpeechToSpeechSession.class);
-			startActivity(intent);
-		} else if (view.equals(btnSwitch)) {
+		if (view.equals(btnSwitch)) {
 			// Get index of selected item in the "to" Spinner,
 			// set it as the index in the "from" Spinner
 			// and visa versa.
@@ -179,5 +217,9 @@ public class Main extends Activity implements View.OnClickListener {
 				Log.e("failed translation", e.getMessage());
 			}
 		}
+	}
+
+	public void getInstance() {
+
 	}
 }

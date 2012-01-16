@@ -2,6 +2,7 @@ package app.DroidTranslate;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
@@ -19,6 +20,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+import android.content.Context;
+import android.util.Log;
+import au.com.bytecode.opencsv.CSVReader;
+
 //To support new languages: add a public constant and add the languages' properties to the 
 //languages list.  Then add it to the arrays.xml file.
 public class LanguageValidator {
@@ -33,7 +38,7 @@ public class LanguageValidator {
 
 	// Internal Lists
 	private static List<Map<String, Object>> _languages;
-	private static List<Map<String, Object>> _icons;
+	private static Map<String, Map<String, ConjugatedVerb>> _conjugations;
 
 	// Public Constants
 	public static final String ENGLISH_LANG = "English";
@@ -51,12 +56,6 @@ public class LanguageValidator {
 
 	// Private Constructor. Do not call.
 	private LanguageValidator() {
-	}
-
-	private static void initAppId() {
-		// read app id from a file that is not committed!
-
-		_appId = "1E47522B362401BF266FE807B29497926065288B";
 	}
 
 	// Initialize Internal Language List
@@ -91,7 +90,7 @@ public class LanguageValidator {
 		language.put(_IMAGE, R.drawable.fre);
 		_languages.add(language);
 
-		// French
+		// Italian
 		language = new HashMap<String, Object>();
 		language.put(_NAME, ITALIAN_LANG);
 		language.put(_ABBR, ITALIAN_LANG_ABBR);
@@ -99,54 +98,6 @@ public class LanguageValidator {
 		language.put(_CONJ, "http://www.wordreference.com/conj/ITverbs.asp?v=" + _INSERT_VERB);
 		language.put(_IMAGE, R.drawable.ital);
 		_languages.add(language);
-	}
-
-	// Initialize Internal Icon List
-	private static void initIconList() {
-		_icons = new ArrayList<Map<String, Object>>();
-
-		Map<String, Object> icon;
-		// English to Spanish
-		icon = new HashMap<String, Object>();
-		icon.put(_LANG_FROM, ENGLISH_LANG);
-		icon.put(_LANG_TO, SPANISH_LANG);
-		icon.put(_IMAGE, R.drawable.eng_to_span);
-		_icons.add(icon);
-
-		// Spanish to English
-		icon = new HashMap<String, Object>();
-		icon.put(_LANG_FROM, SPANISH_LANG);
-		icon.put(_LANG_TO, ENGLISH_LANG);
-		icon.put(_IMAGE, R.drawable.span_to_eng);
-		_icons.add(icon);
-
-		// English to French
-		icon = new HashMap<String, Object>();
-		icon.put(_LANG_FROM, ENGLISH_LANG);
-		icon.put(_LANG_TO, FRENCH_LANG);
-		icon.put(_IMAGE, R.drawable.eng_to_fren);
-		_icons.add(icon);
-
-		// French to English
-		icon = new HashMap<String, Object>();
-		icon.put(_LANG_FROM, FRENCH_LANG);
-		icon.put(_LANG_TO, ENGLISH_LANG);
-		icon.put(_IMAGE, R.drawable.fren_to_eng);
-		_icons.add(icon);
-
-		// Spanish to French
-		icon = new HashMap<String, Object>();
-		icon.put(_LANG_FROM, SPANISH_LANG);
-		icon.put(_LANG_TO, FRENCH_LANG);
-		icon.put(_IMAGE, R.drawable.span_to_fren);
-		_icons.add(icon);
-
-		// French to Spanish
-		icon = new HashMap<String, Object>();
-		icon.put(_LANG_FROM, FRENCH_LANG);
-		icon.put(_LANG_TO, SPANISH_LANG);
-		icon.put(_IMAGE, R.drawable.span_to_eng);
-		_icons.add(icon);
 	}
 
 	public static Locale getLocale(String language) {
@@ -217,6 +168,56 @@ public class LanguageValidator {
 		return R.drawable.icon;
 	}
 
+	private static void readConjugationFile(InputStream stream) {
+		InputStreamReader streamReader = new InputStreamReader(stream);
+
+		CSVReader reader = null;
+		try {
+			reader = new CSVReader(streamReader);
+			String[] nextLine = reader.readNext();// skip column names
+			while ((nextLine = reader.readNext()) != null) {
+				System.out.println(nextLine[0]);
+				ConjugatedVerb verb = new ConjugatedVerb(nextLine[0]);
+				verb.setTense(ConjugatedVerb.IndicativePresent, nextLine);
+				verb.setTense(ConjugatedVerb.IndicativeFuture, reader.readNext());
+				verb.setTense(ConjugatedVerb.IndicativeImperfect, reader.readNext());
+				verb.setTense(ConjugatedVerb.IndicativePreterite, reader.readNext());
+				verb.setTense(ConjugatedVerb.IndicativeConditional, reader.readNext());
+				verb.setTense(ConjugatedVerb.IndicativePresentPerfect, reader.readNext());
+				verb.setTense(ConjugatedVerb.IndicativeFuturePerfect, reader.readNext());
+				verb.setTense(ConjugatedVerb.IndicativePastPerfect, reader.readNext());
+				verb.setTense(ConjugatedVerb.PreteriteArchaic, reader.readNext());
+				verb.setTense(ConjugatedVerb.IndicativeConditionalPerfect, reader.readNext());
+				verb.setTense(ConjugatedVerb.SubjunctivePresent, reader.readNext());
+				verb.setTense(ConjugatedVerb.SubjunctiveImperfect, reader.readNext());
+				verb.setTense(ConjugatedVerb.SubjunctiveFuture, reader.readNext());
+				verb.setTense(ConjugatedVerb.SubjunctivePresentPerfect, reader.readNext());
+				verb.setTense(ConjugatedVerb.SubjunctiveFuturePerfect, reader.readNext());
+				verb.setTense(ConjugatedVerb.SubjunctivePastPerfect, reader.readNext());
+				verb.setTense(ConjugatedVerb.ImperativeAffirmativePresent, reader.readNext());
+				verb.setTense(ConjugatedVerb.ImperativeNegativePresent, reader.readNext());
+				verb.setVerbDefinition(nextLine[1]);
+				_conjugations.get(SPANISH_LANG_ABBR).put(nextLine[0], verb);
+			}
+		} catch (Exception e) {
+			Log.e("Could not read Spanish verb db", e.getMessage());
+		} finally {
+
+		}
+	}
+
+	private static void buildConjugationMap(Context c) {
+		if (_conjugations == null) {
+			_conjugations = new HashMap<String, Map<String, ConjugatedVerb>>();
+
+			// spanish verbs
+			_conjugations.put(SPANISH_LANG_ABBR, new HashMap<String, ConjugatedVerb>());
+			readConjugationFile(c.getResources().openRawResource(R.raw.spanish_verb_db1));
+			readConjugationFile(c.getResources().openRawResource(R.raw.spanish_verb_db2));
+			readConjugationFile(c.getResources().openRawResource(R.raw.spanish_verb_db3));
+		}
+	}
+
 	private static String httpGet(String urlStr) throws IOException {
 		URL url = new URL(urlStr);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -249,12 +250,33 @@ public class LanguageValidator {
 	}
 
 	public static String translateString(String languageFrom, String languageTo, String text) throws Exception {
-		if (_appId == null)
-			initAppId();
-
 		String uri = "http://api.microsofttranslator.com/v2/Http.svc/Translate?appId=" + _appId + "&text=" + java.net.URLEncoder.encode(text) + "&from="
 				+ languageFrom + "&to=" + languageTo;
 
 		return parseXML(httpGet(uri));
+	}
+
+	public static void initializeLanguageEngine(Context c) {
+		buildConjugationMap(c);
+		initializeBingAPI(c);
+	}
+
+	private static void initializeBingAPI(Context c) {
+		InputStreamReader streamReader = new InputStreamReader(c.getResources().openRawResource(R.raw.app_id));
+		BufferedReader reader = new BufferedReader(streamReader);
+
+		try {
+			_appId = reader.readLine();
+		} catch (Exception e) {
+			//won't happen
+		}
+	}
+
+	public static ConjugatedVerb conjugateVerb(String language, String verb) {
+		String abbr = getLanguageString(language);
+		if (_conjugations.containsKey(abbr) && _conjugations.get(abbr).containsKey(verb))
+			return _conjugations.get(abbr).get(verb);
+
+		return null;
 	}
 }

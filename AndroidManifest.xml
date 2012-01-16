@@ -34,7 +34,7 @@
                   android:theme="@style/CustomButton">
         </activity>
         
-        <activity android:name=".Conjugation"
+        <activity android:name=".ConjugationSession"
                   android:label="@string/app_name"
                   android:theme="@style/CustomButton">
         </activity>
@@ -71,6 +71,18 @@
                   android:label="@string/app_name"
                   android:theme="@style/CustomButton">
         </activity>        
+        
+        <activity android:name=".SpanishConjugationView"
+                  android:label="@string/app_name"
+                  android:configChanges="orientation"
+                  android:theme="@style/CustomButton">
+        </activity>   
+        
+        <activity android:name=".ConjugatedVerbView"
+                  android:label="@string/app_name"
+                  android:theme="@style/CustomButton">
+        </activity>   
+        
     </application>
     <uses-sdk android:minSdkVersion="7" />
 </manifest> 
